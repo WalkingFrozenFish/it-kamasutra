@@ -1,5 +1,23 @@
-.text, #title {
-    font-size: 22px;
-    color: rebeccapurple;
-    width: 550px;
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.dialogsItems {
+    padding: 10px;
+}
+
+.dialog {
+    
+}
+
+.dialogsItems .active {
+    color: green;
+}
+
+.messages {
+    padding: 10px;
+}
+
+.message {
 }
