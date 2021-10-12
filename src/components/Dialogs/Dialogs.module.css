@@ -7,8 +7,9 @@
     padding: 10px;
 }
 
-.dialog {
-    
+.dialog a{
+    color: white;
+    text-decoration: none;
 }
 
 .dialogsItems .active {
