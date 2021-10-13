@@ -16,22 +16,38 @@ const Message = (props) => {
 }
 
 const Dialogs = (props) => {
+    let dialogs = [
+        { id: 1, name: "Name 1" },
+        { id: 2, name: "Name 2" },
+        { id: 3, name: "Name 3" },
+        { id: 4, name: "Name 4" },
+        { id: 5, name: "Name 5" },
+        { id: 6, name: "Name 6" },
+        { id: 7, name: "Name 7" },
+    ]
+
+    let messages = [
+        { id: 1, message: "Hi" },
+        { id: 2, message: "Lorem ipsum dolor sit amet." },
+        { id: 3, message: "Lorem ipsum dolor sit amet consectetur, adipisicing elit." },
+        { id: 4, message: "Lorem, ipsum dolor." },
+    ]
+
+    let dialogsElements = dialogs.map((item) => {
+        return <DialogItem name={item.name} id={item.id} key={item.id} />
+    })
+
+    let messagesElements = messages.map((item) => {
+        return <Message message={item.message} key={item.id} />
+    })
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogsItems}>
-                <DialogItem name="Name 1" id="1" />
-                <DialogItem name="Name 2" id="2" />
-                <DialogItem name="Name 3" id="3" />
-                <DialogItem name="Name 4" id="4" />
-                <DialogItem name="Name 5" id="5" />
-                <DialogItem name="Name 6" id="6" />
-                <DialogItem name="Name 7" id="7" />
+                {dialogsElements}
             </div>
             <div className={classes.messages}>
-                <Message message="Hi" />
-                <Message message="Lorem ipsum dolor sit amet." />
-                <Message message="Lorem ipsum dolor sit amet consectetur, adipisicing elit." />
-                <Message message="Lorem, ipsum dolor." />
+                {messagesElements}
             </div>
         </div >
     );
