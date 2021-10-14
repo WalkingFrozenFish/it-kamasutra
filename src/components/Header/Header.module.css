@@ -1,9 +1,9 @@
+/* Файл со стилями компонента */
 .header {
     grid-area: h;
     background-color: orangered;
 }
   
 .header img {
-    /* width: 60px; */
     height: 100%;
 }

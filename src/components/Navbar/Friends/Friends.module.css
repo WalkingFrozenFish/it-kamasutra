@@ -1,0 +1,21 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.friendsBlock {
+
+}
+
+.title {
+    text-align: center;
+    margin: 10px 0;
+}
+
+.blockItems {
+    display: flex;
+    justify-content: space-around
+}
+
+

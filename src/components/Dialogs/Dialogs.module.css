@@ -1,3 +1,4 @@
+/* Файл со стилями компонента */
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
@@ -11,7 +12,3 @@
     color: white;
     text-decoration: none;
 }
-
-/* .dialogsItems .active {
-    color: green;
-} */
