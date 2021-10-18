@@ -3,6 +3,8 @@ import classes from "./Dialogs.module.css";
 // Импорт модулей с компонентами
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import React from "react";
+
 
 // Создаем компонент Dialogs, передаем props
 const Dialogs = (props) => {
@@ -17,6 +19,20 @@ const Dialogs = (props) => {
         return <Message message={item.message} key={item.id} />
     })
 
+    // Создаем ссылку на элемент
+    let newMessageElement = React.createRef();
+
+    let addMessage = () => {
+        props.addMessage();
+    }
+
+    let onMessageChange = () => {
+        // Получаем новое значение value из поля ввода
+        let text = newMessageElement.current.value;
+        // Отправляем его в state
+        props.updateNewMessageText(text);
+    }
+
     // Возвращаем разметку jsx
     return (
         <div className={classes.dialogs}>
@@ -27,6 +43,11 @@ const Dialogs = (props) => {
             <div className={classes.messages}>
                 {/* Отрисовываем массив с обработанными данными */}
                 {messagesElements}
+
+                {/* Присваиваем ссылку элементу */}
+                <textarea ref={newMessageElement} value={props.state.newMessageText} onChange={onMessageChange} cols="30" rows="10" />
+                <button onClick={addMessage}>Click</button>
+
             </div>
         </div >
     );

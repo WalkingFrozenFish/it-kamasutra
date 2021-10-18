@@ -1,3 +1,4 @@
+import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
@@ -7,15 +8,30 @@ const MyPosts = (props) => {
         return <Post message={item.message} avatarUrl={item.avatarUrl} likes={item.likes} key={item.id} />
     })
 
+    let newPostElement = React.createRef();
+
+    let addPost = () => {
+        props.addPost();
+    }
+
+    let onPostChange = () => {
+        // Получаем отредактированные данные из value элемента
+        let text = newPostElement.current.value;
+        console.log(text);
+        // Текст из value отправляем в state
+        props.updateNewPostText(text);
+    }
+
     return (
         <div className={classes.postsBlock}>
             <h3>My posts</h3>
             <div>
                 <div>
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
+                    {/* Получаем данные из state, и записываем их в value */}
+                    <textarea ref={newPostElement} cols="30" rows="10" value={props.newPostText} onChange={onPostChange} />
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
             </div>
             <div className={classes.posts}>
