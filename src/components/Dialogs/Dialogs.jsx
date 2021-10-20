@@ -4,6 +4,8 @@ import classes from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
 import React from "react";
+import { addMessageActionCreator, updateNewMessageTextActionCreator } from "../../redux/state";
+
 
 
 // Создаем компонент Dialogs, передаем props
@@ -23,14 +25,17 @@ const Dialogs = (props) => {
     let newMessageElement = React.createRef();
 
     let addMessage = () => {
-        props.addMessage();
+        // props.addMessage();
+        props.dispatch(addMessageActionCreator());
     }
 
     let onMessageChange = () => {
         // Получаем новое значение value из поля ввода
         let text = newMessageElement.current.value;
         // Отправляем его в state
-        props.updateNewMessageText(text);
+        // props.updateNewMessageText(text);
+        let action = updateNewMessageTextActionCreator(text);
+        props.dispatch(action);
     }
 
     // Возвращаем разметку jsx
