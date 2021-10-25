@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import { addPostActionCreator, updateNewPostActionCreator } from "../../../redux/state";
+import { addPostActionCreator, updateNewPostActionCreator } from "../../../redux/profile-reducer";
 
 
 const MyPosts = (props) => {
@@ -14,7 +14,6 @@ const MyPosts = (props) => {
 
     let addPost = () => {
         // props.addPost();
-
         props.dispatch(addPostActionCreator())
 
     }
@@ -35,7 +34,7 @@ const MyPosts = (props) => {
             <div>
                 <div>
                     {/* Получаем данные из state, и записываем их в value */}
-                    <textarea ref={newPostElement} cols="30" rows="10" value={props.newPostText} onChange={onPostChange} />
+                    <textarea ref={newPostElement} value={props.newPostText} onChange={onPostChange} />
                 </div>
                 <div>
                     <button onClick={addPost}>Add post</button>

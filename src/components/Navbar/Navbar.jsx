@@ -7,6 +7,7 @@ const Navbar = (props) => {
         <div>
             <nav className={classes.nav}>
                 <div className={classes.item}>
+                    {/* Позволяет менять URL в адресной строке */}
                     <NavLink to="/profile" activeClassName={classes.active}>Profile</NavLink>
                 </div>
                 <div className={classes.item}>
@@ -20,6 +21,9 @@ const Navbar = (props) => {
                 </div>
                 <div className={classes.item}>
                     <NavLink to="/settings" activeClassName={classes.active}>Settings</NavLink>
+                </div>
+                <div className={classes.item}>
+                    <NavLink to="/somelink" activeClassName={classes.active}>Some link</NavLink>
                 </div>
             </nav>
 

@@ -1,7 +1,5 @@
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_MESSAGE = "ADD-MESSAGE";
-const UPDATE_NEW_MESSAGE_TEXT = "UPDATE-NEW-MESSAGE-TEXT";
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
 
 let store = {
     _state: {
@@ -54,6 +52,12 @@ let store = {
     },
 
     dispatch(action) {
+
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+
+        this._callSubscriber(this._state);
+
         if (action.type === "ADD-POST") {
             let newPost = {
                 id: 5,
@@ -95,32 +99,6 @@ let store = {
             // Рендерим страницу, передаем новый state
             this._callSubscriber(this._state);
         }
-    }
-}
-
-export const addPostActionCreator = () => {
-    return {
-        type: ADD_POST,
-    }
-}
-
-export const updateNewPostActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT,
-        newText: text,
-    }
-}
-
-export const addMessageActionCreator = () => {
-    return {
-        type: ADD_MESSAGE,
-    }
-}
-
-export const updateNewMessageTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_TEXT,
-        newText: text
     }
 }
 
