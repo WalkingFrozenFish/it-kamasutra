@@ -38,7 +38,6 @@ let store = {
         },
     },
     getState() {
-        debugger
         return this._state;
     },
     _callSubscriber() {
@@ -57,49 +56,9 @@ let store = {
         this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
         this._callSubscriber(this._state);
-
-        if (action.type === "ADD-POST") {
-            let newPost = {
-                id: 5,
-                // Мы получаем данные из поля ввода
-                message: this._state.profilePage.newPostText,
-                likes: 0,
-                avatarUrl: "#",
-            };
-            debugger
-
-            // Добавляем в объект данные из поля ввода
-            this._state.profilePage.posts.push(newPost);
-            // Затираем данные в поле ввода
-            this._state.profilePage.newPostText = "";
-            // Рендерим страницу
-            this._callSubscriber(this._state);
-        } else if (action.type === "UPDATE-NEW-POST-TEXT") {
-            // Каждый символ, каждое значение мы помещаем в state
-            this._state.profilePage.newPostText = action.newText;
-            // Рендерим с новым значением state
-            this._callSubscriber(this._state);
-        } else if (action.type === "ADD-MESSAGE") {
-            // Создаем новый объект сообщения
-            let newMessage = {
-                id: 5,
-                // Присваиваем обновляемый текст сообщения из state
-                message: this._state.dialogsPage.newMessageText,
-            }
-
-            // Добавляем в state новый объект сообщения
-            this._state.dialogsPage.messages.push(newMessage);
-            // При добавлении текста затирать текст в поле ввода
-            this._state.dialogsPage.newMessageText = "";
-            // Рендерим страницу, передаем обновленный state
-            this._callSubscriber(this._state);
-        } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT") {
-            // Записываем в state обновленное значение newText
-            this._state.dialogsPage.newMessageText = action.newText;
-            // Рендерим страницу, передаем новый state
-            this._callSubscriber(this._state);
-        }
     }
 }
+
+
 
 export default store;

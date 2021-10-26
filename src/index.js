@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import store from "./redux/state";
+// import store from "./redux/state";
+import store from "./redux/redux-store";
 
 
 let rerenderEntireTree = (state) => {
+    debugger
     ReactDOM.render(
         <React.StrictMode>
             {/* Записываем в props, импортируемую функцию для обновления state */}
@@ -22,7 +24,10 @@ let rerenderEntireTree = (state) => {
 
 // Вызываем getState, для получения самого state
 rerenderEntireTree(store.getState());
-store.subscribe(rerenderEntireTree);
+store.subscribe(() => {
+    let state = store.getState();
+    rerenderEntireTree(state);
+});
 
 
 // If you want to start measuring performance in your app, pass a function
