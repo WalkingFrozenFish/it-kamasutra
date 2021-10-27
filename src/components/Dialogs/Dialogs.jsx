@@ -21,11 +21,8 @@ const Dialogs = (props) => {
         return <Message message={item.message} key={item.id} />
     })
 
-    // Создаем ссылку на элемент
-    let newMessageElement = React.createRef();
 
     let addMessage = () => {
-        // props.addMessage();
         props.dispatch(addMessageActionCreator());
     }
 
@@ -55,7 +52,7 @@ const Dialogs = (props) => {
                 {/* Присваиваем ссылку элементу */}
                 <div>
                     <div>
-                        <textarea ref={newMessageElement} value={props.state.newMessageText} onChange={onMessageChange} />
+                        <textarea value={props.state.newMessageText} onChange={onMessageChange} />
                     </div>
                     <div>
                         <button onClick={addMessage}>Click</button>
